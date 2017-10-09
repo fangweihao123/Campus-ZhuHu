@@ -1,0 +1,52 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!-- -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AskeQuestion</title>
+    <meta name="viewport" content="width = device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../Content/Ask.css">
+    <link rel="stylesheet" type="text/css" href="../Content/jquery-labelauty.css">
+    <link rel="stylesheet" type="text/css" href="../Content/buttons.css">
+    <script language="JavaScript">
+        function startTime() {
+            var now = new Date();
+            var time = document.getElementsByClassName('state')[0];
+            var
+                second = now.getSeconds(),
+                minute = now.getMinutes(),
+                hour = now.getHours();
+            var timeStamp = hour + ' : ' + minute + ' : ' + second;
+            time.innerHTML = timeStamp;
+            setTimeout('startTime()', 1000);//每一秒中重新加载startTime()方法
+        }
+    </script>
+</head>
+<body onload="startTime()" background="../img/vague1.png">
+    <div style="margin-left:450px;margin-top:100px;">
+        <strong><p style="margin-left:220px;color:#ffffff;font-size:xx-large;">你的回答</p></strong>
+        <div>
+            <form id="postForm" method="post" action="../Student/AnswerQuestionsSuccess">
+                <input type="hidden" name="S_ID" class="S_ID" />
+                <input type="hidden" name="Q_ID" class="Q_ID" />
+                <textarea style="width:600px;height:400px;border:3px solid #000000;" name="content"></textarea>
+                <input type="submit" class="button-block" value="提交" style="margin-left:600px;margin-top:50px;width:100px;height:50px;" />
+            </form>
+        </div>
+    </div>
+    <script>
+        var form = document.getElementById('postForm')
+        var s_id = '@TempData["S_ID"]'
+        var q_id = ' @TempData["Q_ID"]'
+        var s = document.getElementsByClassName('S_ID')[0]
+        var q = document.getElementsByClassName('Q_ID')[0]
+
+        s.value = s_id
+        q.value = q_id
+    </script>
+</body>
+</html>

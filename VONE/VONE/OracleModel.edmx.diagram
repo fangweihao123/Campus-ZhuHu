@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="91c05d1b3aed4a0e988e52349a7685f6" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.ANSWER_TO_Q" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COMPANY" Width="1.5" PointX="5.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DOWNLOAD_RESUME" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FIELD" Width="1.5" PointX="7.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.POS_RELATED_FIELD" Width="1.5" PointX="10" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.POS_RELEASE" Width="1.5" PointX="8" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PROMPT_Q" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Q_TO_FIELD" Width="1.5" PointX="10" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.QUESTION" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RESUME" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SKILL" Width="1.5" PointX="7.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SKILL_TO_STUDENT" Width="1.5" PointX="10" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.STUDENT" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.WANTED_POS" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.SYS_C0010938" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010939" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010947" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010932" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010943" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010950" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010949" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010936" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010926" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010924" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,203 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<body>
+    <div class="LayoutLeft" style="width:400px;height:500px;float:left;">
+        <form class="formLeft" action="../Company/CompInfo">
+
+        </form>
+        <input id="btn" type="button" value="编辑" />
+    </div>
+    <div class="LayoutRight" style="width:400px;height:500px;float:left;">
+
+    </div>
+    <div>
+        <a href="../Company/AddWantedJob"><input type="button" value="发布新职位"></a>
+    </div>
+    <script>
+        var companyInfo = '@TempData["companyInfo"]'
+
+        companyInfo = companyInfo.replace(/&quot;/g, '"')
+        companyInfo = JSON.parse(companyInfo)
+
+        var companyJobs = '@TempData["companyJobs"]'
+        companyJobs = companyJobs.replace(/&quot;/g, '"')
+        companyJobs = JSON.parse(companyJobs)
+
+        var companyResume = '@TempData["companyResume"]'
+        companyResume = companyResume.replace(/&quot;/g, '"')
+        companyResume = JSON.parse(companyResume)
+
+        var layoutLeft = document.getElementsByClassName('formLeft')[0]
+        var layoutRight = document.getElementsByClassName('LayoutRight')[0]
+
+        var c_id = document.createElement('p')
+        var comp_name = document.createElement('p')
+        var comp_type = document.createElement('p')
+        var comp_address = document.createElement('p')
+        var email = document.createElement('p')
+        var phone_num = document.createElement('p')
+
+        c_id.innerHTML = companyInfo.c_id
+        comp_name.innerHTML = companyInfo.comp_name
+        comp_type.innerHTML = companyInfo.comp_type
+        comp_address.innerHTML = companyInfo.comp_address
+        email.innerHTML = companyInfo.comp_email
+        phone_num.innerHTML = companyInfo.comp_phone
+
+        var input = document.createElement('input')
+        input.type = 'hidden'
+        input.name = 'c_id'
+        input.className = 'input'
+        input.value = companyInfo.c_id
+        layoutLeft.appendChild(c_id)
+        layoutLeft.appendChild(input)
+
+        var input1 = document.createElement('input')
+        input1.type = 'hidden'
+        input1.name = 'comp_name'
+        input1.className = 'input'
+        input1.value = companyInfo.comp_name
+        layoutLeft.appendChild(comp_name)
+        layoutLeft.appendChild(input1)
+
+        var input2 = document.createElement('input')
+        input2.type = 'hidden'
+        input2.name = 'comp_type'
+        input2.className = 'input'
+        input2.value = companyInfo.comp_type
+        layoutLeft.appendChild(comp_type)
+        layoutLeft.appendChild(input2)
+
+        var input3 = document.createElement('input')
+        input3.type = 'hidden'
+        input3.name = 'comp_address'
+        input3.className = 'input'
+        input3.value = companyInfo.comp_address
+        layoutLeft.appendChild(comp_address)
+        layoutLeft.appendChild(input3)
+
+        var input4 = document.createElement('input')
+        input4.type = 'hidden'
+        input4.name = 'email'
+        input4.className = 'input'
+        input4.value = companyInfo.comp_email
+        layoutLeft.appendChild(email)
+        layoutLeft.appendChild(input4)
+
+        var input5 = document.createElement('input')
+        input5.type = 'hidden'
+        input5.name = 'phone_num'
+        input5.className = 'input'
+        input5.value = companyInfo.comp_phone
+        layoutLeft.appendChild(phone_num)
+        layoutLeft.appendChild(input5)
+
+        var button = document.getElementById('btn')
+        btn.addEventListener('click', function () {
+            return function () {
+                var inputArray = document.getElementsByClassName('input')
+                for (var x = 0; x < inputArray.length; x++) {
+                    console.log(1)
+                    inputArray[x].type = 'text'
+                }
+            };
+        }())
+
+        var submit = document.createElement('input')
+        submit.type = 'submit'
+        submit.value = '修改提交'
+
+        layoutLeft.appendChild(submit)
+
+        var div1 = document.createElement('div')
+        var div2 = document.createElement('div')
+
+        for(var i =0;i<companyJobs.length;i++)
+        {
+            var pos_name = document.createElement('p')
+            var salary = document.createElement('p')
+            pos_name.innerHTML = companyJobs[i].pos_name
+            salary.innerHTML = companyJobs[i].salary
+            div1.appendChild(pos_name)
+            div1.appendChild(salary)
+            var postform = document.createElement('form')
+            postform.name = 'deleteForm'
+            var input7 = document.createElement('input')
+            input7.type = 'hidden'
+            input7.name = 'pos_id'
+            input7.value = companyJobs[i].pos_id
+            postform.appendChild(input7)
+            var input8 = document.createElement('input')
+            input8.type = 'button'
+            input8.value = '删除该职位'
+            postform.appendChild(input8)
+
+            input8.addEventListener('click', function () {
+                var count = i
+                return function () {
+                    var form = document.getElementsByName('deleteForm')[count];
+                    form.action = '../Company/DeleteJob';
+                    form.method = 'post';
+                    form.submit();
+                };
+            }())
+            div1.appendChild(postform)
+        }
+
+        for (var i = 0; i < companyResume.length; i++)
+        {
+            var s_id = document.createElement('p')
+            var s_name = document.createElement('p')
+            var occupation = document.createElement('p')
+            var points = document.createElement('p')
+
+            s_id.innerHTML = companyResume[i].s_id
+            s_name.innerHTML = companyResume[i].s_name
+            occupation.innerHTML = companyResume[i].occupation
+            points.innerHTML = '总赞数:' + companyResume[i].points
+
+            div2.appendChild(s_id)
+            div2.appendChild(s_name)
+            div2.appendChild(occupation)
+            div2.appendChild(points)
+
+            var form = document.createElement('form')
+            form.id = 'downloadForm'
+            var input9 = document.createElement('input')
+            input9.type = 'hidden'
+            input9.name = 'doc_path'
+            input9.value = companyResume[i].doc_path
+            form.appendChild(input9)
+            var input10 = document.createElement('input')
+            input10.type = 'submit'
+            input10.value = '下载申请者简历'
+
+            input10.addEventListener('click', function () {
+                var count = i
+                return function () {
+                    var form = document.getElementsByName('downloadForm')[count];
+                    form.action = '../Search/DownloadResume';
+                    form.method = 'post';
+                    form.submit();
+                };
+            }())
+
+            div2.appendChild(form)
+        }
+
+        layoutRight.appendChild(div1)
+        layoutRight.appendChild(div2)
+
+
+    </script>
+</body>
+</html>

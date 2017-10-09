@@ -1,0 +1,131 @@
+.search-logo{
+    height:20px;
+    width:auto;
+    left:1250px;
+    top: 17px;
+    position:absolute;
+}
+
+.logoImg{
+    width:100%;
+}
+
+.background{
+    width:100%;
+    height:600px;
+    background: #ffffff;
+}
+
+.logo-bbb {
+    height: 50px;
+    width: auto;
+    margin-left: 20px;
+    margin-top: 1px;
+}
+
+.search{
+
+}
+
+.searchButton{
+    height:40px;
+    width:120px;
+    background-color:#0094ff;
+    border:0;
+    border-radius:6px;
+    color:#fee;
+    font-size:20px;
+    position: absolute;
+    left: 930px;
+    top: 105px;
+}
+
+.searchInput{
+    height: 28px;
+    width:500px;
+    position: absolute;
+    left: 380px;
+    top: 105px;
+    font-size: large;
+
+}
+
+.navigation{
+    position: absolute;
+    left:400px;
+    top:170px;
+}
+
+ul>li>.btn{
+    background-color: transparent;
+    border:none;
+    outline: none;
+}
+
+.quebec {
+    position: absolute;
+    top:30px;
+    left: 25px;
+    z-index: 3;
+    margin: 0;
+    border: 0;
+    width: 5px;
+    height: 2px;
+    padding: 0;
+    overflow: hidden;
+    background: #00b7ee;
+    display:none;
+
+    -webkit-transition-property: left, width;
+    -moz-transition-property: left, width;
+    -ms-transition-property: left, width;
+    -o-transition-property: left, width;
+    transition-property: left, width;
+
+    -webkit-transition-duration: .5s;
+    -moz-transition-duration: .5s;
+    -ms-transition-duration: .5s;
+    -o-transition-duration: .5s;
+    transition-duration: .5s;
+}
+
+.nav1 li{ line-height:22px; float:left; padding:0 30px; font-size:110%; width: 10px;}
+
+.nav1{width:510px;height:auto;margin-left:600px;}
+
+.btn1{background-color: #ffffff}
+
+img:hover{box-shadow:0px 0px 2px 3px #000;}
+
+.layoutRight{float:left;margin-left: 1350px;margin-top:0px;}
+
+.nav3>li>a>input{border:1px solid #000000;height:30px;width:90px;background-color: #ffffff;}
+
+#content{
+    position:absolute;
+    float:top;
+    width:800px;
+    height:400px;
+    left:200px;
+    top:200px;
+    overflow:scroll;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+
+::-webkit-scrollbar-track {
+		  background-color: #b46868;
+	} /* 滚动条的滑轨背景颜色 */
+
+	::-webkit-scrollbar-thumb {
+		  background-color: rgba(0, 0, 0, 0.2); 
+	} /* 滑块颜色 */
+
+	::-webkit-scrollbar-button {
+		  background-color: #7c2929;
+	} /* 滑轨两头的监听按钮颜色 */
+
+	::-webkit-scrollbar-corner {
+		  background-color: black;
+	} /* 横向滚动条和纵向滚动条相交处尖角的颜色 */

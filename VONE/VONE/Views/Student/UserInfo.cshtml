@@ -1,0 +1,173 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<body>
+    <div class="LayoutLeft" style="width:400px;height:500px;float:left;">
+        <form class="formLeft" action="../Student/UserInfo" method="post">
+            
+        </form>
+        <input id="btn" type="button" value="编辑" />
+        <input id="btn1" type="button" value="下载" />
+    </div>
+    <div style="width:400px;height:500px;float:left;">
+        <form class="LayoutRight" id="postForm">
+
+        </form>
+    </div>
+    <script>
+        var studentInfo = '@TempData["studentInfo"]'
+        var studentAnswer = '@TempData["studentAnswer"]'
+
+        studentInfo = studentInfo.replace(/&quot;/g, '"')
+        studentInfo = JSON.parse(studentInfo)
+
+        studentAnswer = studentAnswer.replace(/&quot;/g, '"')
+        studentAnswer = JSON.parse(studentAnswer)
+
+
+
+        var layoutLeft = document.getElementsByClassName('formLeft')[0]
+        var layoutRight = document.getElementsByClassName('LayoutRight')[0]
+
+        var s_id = document.createElement('p')
+        var studentname = document.createElement('p')
+        var college_name = document.createElement('p')
+        var major = document.createElement('p')
+        var degree = document.createElement('p')
+        var admitted_year = document.createElement('p')
+        var email = document.createElement('p')
+        var phone_num = document.createElement('p')
+
+        s_id.innerHTML = studentInfo.S_ID
+        studentname.innerHTML = studentInfo.NAME
+        college_name.innerHTML = studentInfo.COLLEGE_NAME
+        major.innerHTML = studentInfo.MAJOR
+        degree.innerHTML = studentInfo.DEGREE
+        admitted_year.innerHTML = '@TempData["admittedYear"]'
+        email.innerHTML = studentInfo.EMAIL
+        phone_num.innerHTML = studentInfo.PHONE_NUM
+
+        var input = document.createElement('input')
+        input.type = 'hidden'
+        input.name = 's_id'
+        input.className = 'input1'
+        input.value = studentInfo.S_ID
+        layoutLeft.appendChild(s_id)
+        layoutLeft.appendChild(input)
+
+        var input1 = document.createElement('input')
+        input1.type = 'hidden'
+        input1.name = 'studentname'
+        input1.className = 'input1'
+        input1.value = studentInfo.NAME
+        layoutLeft.appendChild(studentname)
+        layoutLeft.appendChild(input1)
+
+        var input2 = document.createElement('input')
+        input2.type = 'hidden'
+        input2.name = 'college_name'
+        input2.className = 'input1'
+        input2.value = studentInfo.COLLEGE_NAME
+        layoutLeft.appendChild(college_name)
+        layoutLeft.appendChild(input2)
+
+        var input3 = document.createElement('input')
+        input3.type = 'hidden'
+        input3.name = 'major'
+        input3.className = 'input1'
+        input3.value = studentInfo.MAJOR
+        layoutLeft.appendChild(major)
+        layoutLeft.appendChild(input3)
+
+        var input4 = document.createElement('input')
+        input4.type = 'hidden'
+        input4.name = 'degree'
+        input4.className = 'input1'
+        input4.value = studentInfo.DEGREE
+        layoutLeft.appendChild(degree)
+        layoutLeft.appendChild(input4)
+
+        var input5 = document.createElement('input')
+        input5.type = 'hidden'
+        input5.name = 'admitted_year'
+        input5.className = 'input1'
+        input5.value = '@TempData["admittedYear"]'
+        layoutLeft.appendChild(admitted_year)
+        layoutLeft.appendChild(input5)
+
+        var input6 = document.createElement('input')
+        input6.type = 'hidden'
+        input6.name = 'email'
+        input6.className = 'input1'
+        input6.value = studentInfo.EMAIL
+        layoutLeft.appendChild(email)
+        layoutLeft.appendChild(input6)
+
+        var input7 = document.createElement('input')
+        input7.type = 'hidden'
+        input7.name = 'phone_num'
+        input7.className = 'input1'
+        input7.value = studentInfo.PHONE_NUM
+        layoutLeft.appendChild(phone_num)
+        layoutLeft.appendChild(input7)
+        
+        var button = document.getElementById('btn')
+        btn.addEventListener('click', function()
+        {
+            return function()
+            {
+                var inputArray = document.getElementsByClassName('input1')
+                for(var x=0;x<inputArray.length;x++)
+                {
+                    console.log(1)
+                    inputArray[x].type = 'text'
+                }
+            };
+         }())
+
+        var submit = document.createElement('input')
+        submit.type = 'submit'
+        submit.value = '修改提交'
+
+        layoutLeft.appendChild(submit)
+
+        for(var i=0;i<studentAnswer.length;i++)
+        {
+            var div = document.createElement('div')
+            var ID = document.createElement('p')
+            var title = document.createElement('p')
+
+
+            ID.innerHTML = studentAnswer[i].q_num
+            title.innerHTML = studentAnswer[i].title
+
+            div.appendChild(ID)
+            div.appendChild(title)
+
+            div.style.cssText = 'border:3px solid #000000;width:500px;height:100px;'
+            div.addEventListener('click', function () {
+                var q_id = studentAnswer[i].q_num
+                return function()
+                {
+                    var form = document.getElementById('postForm');
+                    form.action = '../Search/QuestionDetails?Q_ID=' + q_id;
+                    form.method = 'post';
+                    form.submit();
+                }
+            }())
+
+            layoutRight.appendChild(div)
+        }
+
+      
+    </script>
+</body>
+</html>

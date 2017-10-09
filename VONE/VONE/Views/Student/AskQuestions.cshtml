@@ -1,0 +1,90 @@
+﻿@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!-- -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AskeQuestion</title>
+    <meta name="viewport" content="width = device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../Content/Ask.css?1.0.0">
+    <link rel="stylesheet" type="text/css" href="../Content/jquery-labelauty.css">
+    <script language="JavaScript">
+        function startTime() {
+            var now = new Date();
+            var time = document.getElementsByClassName('state')[0];
+            var
+                second = now.getSeconds(),
+                minute = now.getMinutes(),
+                hour = now.getHours();
+            var timeStamp = hour + ' : ' + minute + ' : ' + second;
+            time.innerHTML = timeStamp;
+            setTimeout('startTime()', 1000);//每一秒中重新加载startTime()方法 
+        }
+    </script>
+</head>
+<body onload="startTime()">
+    <div class="container">
+        <div class="box box-top top-style2">
+            <div class="logoImg">
+                <!-- logo图片 -->
+            </div>
+            <div class="state">保存于15：00</div>
+        </div>
+
+        <div class="box background">
+            <div class="content">
+               <form method="post" action="../Student/AddSuccess">
+                   <input class="input1" type="text" placeholder="你的问题" name="question">
+                   
+                   <h3 id="field">选择问题相关领域</h3>
+                   <ul class="dowebok" style="margin-left:50px;">
+                    
+                   </ul>
+                   <textarea id="editor_id" name="content" placeholder="从这里开始写下关于您的问题详细描述..." wrap="soft"></textarea>
+
+                   <div class="uploadBtn">
+                           <input type="submit" class="upload-Btn" name="upload" value="发表问题">
+                   </div>
+               </form>
+            </div>
+        </div>
+        <div class="box footer">
+            <!-- 底部-->
+            <div class="bottomLine"></div>
+            <nav>
+                <div class="footer-txt footer-title">联系我们</div>
+  
+                <div class="footer-txt footer-msg">Copyright © 2017 dPinch Design Ltd. All rights reserved. DoubleDogs is a registered trademark.</div>
+            </nav>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/jquery-labelauty.js"></script>
+    <script>
+        var y = '@TempData["json"]';
+        var x = y.replace(/&quot;/g, '"');
+        x = JSON.parse(x);
+        var ul = document.getElementsByClassName('dowebok')[0]
+        for (var i=0 ; i < x.length ; i++)
+        {
+            var li = document.createElement('li');
+            var input = document.createElement('input');
+            var data = x[i].fieldname;
+            input.type = 'checkbox';
+            input.name = 'checkbox';
+            input.value = data;
+            input.setAttribute('data-labelauty',data);
+            li.appendChild(input);
+            ul.appendChild(li);
+        }
+    </script>
+    <script>
+        $(function(){
+	        $(':input').labelauty();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+</head>
+<body>
+    <div class="content" style="width:600px;height:500px;overflow:scroll;margin-left:300px;"></div>
+    <div>
+        <form id="AnswerForm" method="post" action="../Student/AnswerQuestions">
+            <input type="hidden" name="S_ID"/>
+            <input type="hidden" name="Q_ID" />
+            <input id="btn" type="button" value="我的回答" />
+        </form>
+    </div>
+    <script>
+        var x = '@TempData["json"]'
+        x = x.replace(/&quot;/g, '"')
+        x = x.replace(/\r\n/g,'<br/>')
+        var json = JSON.parse(x)
+        var left = document.getElementsByClassName('content')[0];
+        var form = document.createElement('form')
+        form.id = 'postForm'
+        for(var i=0;i<json.length;i++)
+        {
+            var div = document.createElement('div')
+            var div2 = document.createElement('div')
+            var username = document.createElement('p')
+            var content = document.createElement('p')
+            var points = document.createElement('p')
+
+            var username1 = json[i].studentName                                  //传入的是AnswerModel    有q_id studentName content point
+            var q_id = json[i].q_num
+            var s_id = json[i].s_id
+            username.innerHTML = username1
+            content.innerHTML = json[i].content                                 //通过get传递的有 q_id s_id 来找到answer具体 
+            points.innerHTML = json[i].point
+            console.log(typeof Q_ID)
+
+            div.style.cssText = 'width:500px;height:auto;margin-top:30px;box-shadow: 2px 2px 5px 2px rgb(192, 192, 192);border-radius: 3px; background-color :rgb(192, 192, 192);'
+            /*div.addEventListener('click', function (q_id,s_id) {
+                return function () {
+                    var form = document.getElementById('postForm');
+                    form.action = '../Search/QuestionDetails?Q_ID=' + q_id + '&&S_ID=' + s_id;
+                    form.method = 'post';
+                    form.submit();
+                };
+            }(q_id,s_id)   ) */
+            div2.style.cssText = 'float:left;width:100px;height:auto;border-right:1px solid #000000'
+            username.style.cssText = 'margin-left:40px;padding-top:20px;'
+            content.style.cssText = 'float:top;padding-top:20px;'
+            points.style.cssText = 'float:top;margin-top:20px;'
+
+            div2.appendChild(username)
+            div.appendChild(div2)
+            div.appendChild(content)
+            div.appendChild(points)
+            form.appendChild(div)
+
+            var div3 = document.createElement('div')
+            var link = document.createElement('a')
+            var img = document.createElement('img')
+            img.src = '../img/点赞.png'
+            img.style.cssText = 'float:left;width:20px;height:20px;'
+            link.href = '../Search/favor?Q_ID=' + q_id + '&S_ID=' + s_id
+            link.appendChild(img)
+            div3.appendChild(link)
+            form.appendChild(link)
+        }
+        left.appendChild(form)
+
+        var btn = document.getElementById('btn')
+        btn.addEventListener('click', function () {
+            var q_id = '@TempData["Q_ID"]'
+            return function () {
+                var form = document.getElementById('AnswerForm');
+                form.action = '../Student/AnswerQuestions'
+                form.method = 'post';
+                document.getElementsByName('Q_ID')[0].value = q_id
+                form.submit();
+            };
+        }())
+    </script>
+</body>
+</html>
+

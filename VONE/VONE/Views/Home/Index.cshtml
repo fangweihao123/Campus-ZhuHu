@@ -1,0 +1,76 @@
+﻿@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <script src="https://unpkg.com/vue"></script>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="~/Scripts/script.js?1.0.0"></script>
+    <script type="text/javascript" src="~/Scripts/vue.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../content/bootstraptemp.css" />
+
+    <link rel="stylesheet" type="text/css" href="../content/Indexstyle.css" />
+    <link rel="stylesheet" type="text/css" href="../content/buttons.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+</head>
+<body>
+    
+    <div class="head">
+        <div class="content">
+            <div class="logo"><a>校园管理系统</a></div>
+            <div class="search">
+                <form method="post" action="../Search/Question">
+                    <input type="text" name="search" class="form-control" placeholder="搜索问题">
+                    <button class="button button-rounded search-button button-search" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+            </div>
+
+
+            <div class="nav">
+                <ul>
+                    <li><a href="../Search/Jobs">工作</a></li>
+                    <li><a>用户</a></li>
+                    <li><a>新手指南</a></li>
+                </ul>
+            </div>
+            @if (Request.Cookies["Account"] == null|| Request.Cookies["Account"].Value == null)
+            {
+                <a href="../Home/SignIn"><button class="button button-primary button-rounded button-small signin"><h5 class="signin-font">登录</h5></button></a>
+            }
+            else
+            {
+                <div style="margin-left:1100px; width:300px; font-size:large; margin-top:-25px;">
+                    @if (Request.Cookies["Occupation"].Value == "学生")
+                    {
+                        <a href="../Student/UserInfo" style="float:left;color: #1B9AF7;">@HttpUtility.UrlDecode(Request.Cookies["user"].Value)</a>
+                    }
+                    else
+                    {
+                        <a href="../Company/CompInfo" style="float:left;color: #1B9AF7;">@HttpUtility.UrlDecode(Request.Cookies["user"].Value)</a>
+                    }
+
+                    <p style="color:#ffffff;float:left;margin-left:10px;">欢迎 ! </p>
+                    <a href="../Home/LogOut" onclick="js_method()" style="float:left;margin-left:20px;color: #1B9AF7;">退出登陆</a>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="mid">
+        <a href="SignUp" class="button button-primary button-rounded create-account">创建账号</a>
+        <h4 class="or">或</h4>
+        <a class="button button-glow button-border button-rounded button-primary find-job">寻找工作</a>
+        <img id="bg" src="../img/bg2.png">
+
+    </div>
+
+    <div class="foot">
+    </div>
+</body>
+</html>

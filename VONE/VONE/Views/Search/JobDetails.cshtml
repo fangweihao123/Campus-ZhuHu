@@ -1,0 +1,198 @@
+﻿@model VONE.Models.Resume
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joblist</title>
+    <script src="https://unpkg.com/vue"></script>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="~/Scripts/script.js"></script>
+    <script type="text/javascript" src="~/Scripts/vue.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../content/bootstraptemp.css" />
+
+    <link rel="stylesheet" type="text/css" href="../content/Indexstyle.css" />
+    <link rel="stylesheet" type="text/css" href="../content/buttons.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .box-shadow-2 {
+            -webkit-box-shadow: 0 0 5px #808080;
+            -moz-box-shadow: 0 0 5px #808080;
+            box-shadow: 0 0 5px #808080;
+        }
+
+        .file {
+            float: left;
+            padding-left: 30px;
+        }
+
+        input[type='file']::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+
+        input[type='file']::before {
+            content: "选择文件";
+            padding: 5px 10px;
+            color: #fff;
+            background-color: #24394e;
+            font-size: 13px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type='file']:hover::before {
+            background-color: #34495e;
+        }
+
+        input[type='file']:focus {
+            outline: 0;
+            -webkit-box-shadow: 0 0 0px rgba(102, 175, 233, 0.6);
+            box-shadow: 0 0 0px rgba(102, 175, 233, 0.6);
+        }
+    </style>
+
+</head>
+
+<body style="margin:0; background-color:#ddd; ">
+    <div class="head" style="margin-bottom:30px">
+        <div class="content">
+            <div class="logo"><a>校园管理系统</a></div>
+            <div class="search">
+                <form method="post" action="../Search/Question">
+                    <input type="text" name="search" class="form-control" placeholder="搜索问题">
+                    <button class="button button-rounded search-button button-search" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+            </div>
+
+
+            <div class="nav">
+                <ul>
+                    <li><a href="../Search/Jobs">工作</a></li>
+                    <li><a>用户</a></li>
+                    <li><a>新手指南</a></li>
+                </ul>
+            </div>
+            @if (Session["Occupation"] == null)
+            {
+                <a href="Home/SignIn"><button class="button button-primary button-rounded button-small signin"><h5 class="signin-font">登录</h5></button></a>
+            }
+            else
+            {
+                <div style="margin-left:1100px; width:300px; font-size:large; margin-top:-25px;">
+                    <a style="float:left;">@Session["user"]</a>
+                    <p style="color:#ffffff;float:left;margin-left:10px;">欢迎 ! </p>
+                    <a href="#" onclick="js_method()" style="float:left;margin-left:20px;">退出登陆</a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="box-shadow-2" style=" margin:0 auto;width:900px;min-height:640px;background-color:#f1f6fb;border-radius:3px;">
+        <div class="LayoutLeft">
+        </div>
+        <div class="LayoutRight">
+        </div>
+        <hr style="margin-bottom:8px; width:95%;height:1px;border:none;border-top:1px solid #ddd;" />
+
+        @using (Html.BeginForm("ApplySuccess", "Student", FormMethod.Post, new { EncType = "multipart/form-data" }))
+        {
+            <input class="file" type="file" id="file" name="re" value="选择文件" />
+
+
+
+            <input class="btn btn-success " style="float:left; margin-left:415px; margin-right:10px;" type="submit" name="submit" value="上传简历" />
+
+        }
+
+        <form id="downloadForm">
+            <input class="btn btn-info" id="download" type="button" value="下载简历" />
+        </form>
+    </div>
+    <div class="foot" style="margin-top:30px;">
+    </div>
+    <script>
+        var download = document.getElementById('download')
+
+        download.addEventListener('click', function () {
+            return function () {
+                var form = document.getElementById('downloadForm');
+                form.action = '../Search/DownloadTemplate';
+                form.method = 'post';
+                form.submit();
+            };
+        }())
+
+        var jobJSON = '@TempData["jobJSON"]'
+        var compJSON = '@TempData["compJSON"]'
+
+        jobJSON = jobJSON.replace(/&quot;/g, '"')
+        jobJSON = JSON.parse(jobJSON)
+
+        compJSON = compJSON.replace(/&quot;/g, '"')
+        compJSON = JSON.parse(compJSON)
+
+        var layoutLeft = document.getElementsByClassName('LayoutLeft')[0]
+        var layoutRight = document.getElementsByClassName('LayoutRight')[0]
+
+        var pos_id = document.createElement('p')
+        var pos_name = document.createElement('p')
+        var salary = document.createElement('p')
+        var description_title = document.createElement('p')
+        var pos_description = document.createElement('div')
+
+
+        //pos_id.innerHTML = jobJSON.pos_id
+        pos_name.innerHTML = jobJSON.pos_name
+        salary.innerHTML = jobJSON.salary
+        description_title.innerHTML = '工作描述'
+        pos_description.innerHTML = jobJSON.pos_description
+
+       // layoutLeft.appendChild(pos_id)
+        layoutLeft.appendChild(pos_name)
+        layoutLeft.appendChild(salary)
+        layoutLeft.appendChild(description_title)
+        layoutLeft.appendChild(pos_description)
+        layoutLeft.style.cssText = 'background-color:#fff;padding:30px; width:900px;height:auto;border-bottom:solid 1px #eee;text-align:left;border-top-left-radius:3px;border-top-right-radius:3px;'
+        pos_name.style.cssText = 'font-size:25px;font-weight:bold;'
+        salary.style.cssText = 'font-size:15px;'
+        pos_description.style.cssText = 'font-size:15px;width:500px;'
+        description_title.style.cssText = 'font-size:25px;font-weight:bold;'
+
+        var companyInfo = '@TempData["compJSON"]'
+
+        companyInfo = companyInfo.replace(/&quot;/g, '"')
+        companyInfo = JSON.parse(companyInfo)
+
+       // var c_id = document.createElement('p')
+        var comp_name = document.createElement('p')
+        var comp_type = document.createElement('div')
+        var comp_address = document.createElement('p')
+        var email = document.createElement('p')
+        var phone_num = document.createElement('p')
+
+        //c_id.innerHTML = companyInfo.c_id
+        comp_name.innerHTML = companyInfo.comp_name
+        comp_type.innerHTML = companyInfo.comp_type
+        comp_address.innerHTML = companyInfo.comp_address
+        email.innerHTML = companyInfo.comp_email
+        phone_num.innerHTML = companyInfo.comp_phone
+
+       // layoutRight.appendChild(c_id)
+        layoutRight.appendChild(comp_name)
+        layoutRight.appendChild(comp_type)
+        layoutRight.appendChild(comp_address)
+        layoutRight.appendChild(email)
+        layoutRight.appendChild(phone_num)
+        layoutRight.style.cssText ="padding:30px; width: 900px; height: auto; text-align:left;  font-size:15px;"
+        comp_name.style.cssText = "font-size:25px;font-weight:bold;"
+        comp_type.style.cssText = "border:solid 1px #aaa;border-radius:3px;width:auto;display:inline-block;padding-left:5px;padding-right:5px;margin-bottom:10px;"
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!-- -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyTrip</title>
+    <meta name="viewport" content="width = device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../Content/MyTrip.css?1.0.1">
+    <link rel="stylesheet" type="text/css" href="../Content/public.css">
+    <script type="text/javascript" src="~/Scripts/MyJs.js?1.0.2" language="javascript"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="box box-top top-style2">
+            <div class="logoImg">
+
+            </div>
+            <div>
+                <!--this div is prepared for the user info-->
+
+            </div>
+        </div>
+
+        <div class="box background">
+            <div class="layoutLeft">
+                <div class="search">
+                    <form method="post" action="../Search/Question">
+                        <input class="form-control" name="search" style="width:500px;height:28px;position:absolute;left: 380px;top: 105px;font-size: large;" type="text" placeholder="请输入你要查询的内容">
+                        <input class="searchButton" type="submit" value="查询">
+                    </form>
+                </div>
+                <div id="content"></div>
+            </div>
+
+            <div class="layoutRight">
+                <nav class="nav3">
+                </nav>
+            </div>
+
+            <div>
+                <a href="../Student/AskQuestions"><input class="form-control" style="margin-left:100px;margin-top:100px;height:30px;" type="button" value="我要提问" /></a>
+            </div>
+
+        </div>
+
+        <div class="box footer">
+            <!-- 底部-->
+            <div class="bottomLine"></div>
+            <nav>
+                <div class="footer-txt footer-title">联系我们</div>
+                <div class="box footer-icon">
+                </div>
+                <div class="footer-txt footer-service">
+                    <a href="customerService.html">用户手册</a>
+                </div>
+                <div class="footer-txt footer-msg">Copyright © 2017 Po</div>
+            </nav>
+        </div>
+    </div>
+    <script>
+        var y = '@TempData["field"]'
+        y = y.replace(/&quot;/g, '"')
+        var json = JSON.parse(y)
+        navigation(json)
+
+        var x = '@TempData["json"]'
+        x = x.replace(/&quot;/g, '"')
+        showQuestion(x)
+
+    </script>
+</body>
+</html>

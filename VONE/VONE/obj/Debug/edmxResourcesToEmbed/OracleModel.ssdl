@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ANSWER_TO_Q">
+    <Key>
+      <PropertyRef Name="S_ID" />
+      <PropertyRef Name="Q_NUM" />
+    </Key>
+    <Property Name="S_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="Q_NUM" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="CONTENT" Type="varchar2" MaxLength="1000" />
+    <Property Name="POINTS" Type="number" Precision="10" Scale="0" />
+  </EntityType>
+  <EntityType Name="COMPANY">
+    <Key>
+      <PropertyRef Name="C_ID" />
+    </Key>
+    <Property Name="C_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="COMP_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="COMP_TYPE" Type="varchar2" MaxLength="30" />
+    <Property Name="COMP_ADDRESS" Type="varchar2" MaxLength="100" />
+    <Property Name="COMP_EMAIL" Type="varchar2" MaxLength="30" />
+    <Property Name="COMP_PHONE" Type="number" Precision="20" Scale="0" />
+    <Property Name="C_KEY" Type="varchar2" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DOWNLOAD_RESUME">
+    <Key>
+      <PropertyRef Name="C_ID" />
+      <PropertyRef Name="S_ID" />
+      <PropertyRef Name="OCCUPATION" />
+    </Key>
+    <Property Name="C_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="S_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="OCCUPATION" Type="varchar2" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FIELD">
+    <Key>
+      <PropertyRef Name="FIELD_NAME" />
+    </Key>
+    <Property Name="FIELD_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="POS_RELATED_FIELD">
+    <Key>
+      <PropertyRef Name="POS_ID" />
+    </Key>
+    <Property Name="POS_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="FIELD_NAME" Type="varchar2" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="POS_RELEASE">
+    <Key>
+      <PropertyRef Name="POS_ID" />
+      <PropertyRef Name="C_ID" />
+    </Key>
+    <Property Name="POS_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="C_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROMPT_Q">
+    <Key>
+      <PropertyRef Name="S_ID" />
+      <PropertyRef Name="Q_NUM" />
+    </Key>
+    <Property Name="S_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="Q_NUM" Type="number" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Q_TO_FIELD">
+    <Key>
+      <PropertyRef Name="Q_NUM" />
+      <PropertyRef Name="FIELD_NAME" />
+    </Key>
+    <Property Name="Q_NUM" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="FIELD_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QUESTION">
+    <Key>
+      <PropertyRef Name="Q_NUM" />
+    </Key>
+    <Property Name="Q_NUM" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="TITLE" Type="varchar2" MaxLength="1000" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="RESUME">
+    <Key>
+      <PropertyRef Name="S_ID" />
+      <PropertyRef Name="OCCUPATION" />
+    </Key>
+    <Property Name="S_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="OCCUPATION" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="DOC_PATH" Type="varchar2" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="SKILL">
+    <Key>
+      <PropertyRef Name="SKILL_NAME" />
+    </Key>
+    <Property Name="SKILL_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SKILL_TO_STUDENT">
+    <Key>
+      <PropertyRef Name="S_ID" />
+      <PropertyRef Name="SKILL_NAME" />
+    </Key>
+    <Property Name="S_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="SKILL_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STUDENT">
+    <Key>
+      <PropertyRef Name="S_ID" />
+    </Key>
+    <Property Name="S_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="COLLEGE_NAME" Type="varchar2" MaxLength="30" />
+    <Property Name="MAJOR" Type="varchar2" MaxLength="30" />
+    <Property Name="DEGREE" Type="varchar2" MaxLength="30" />
+    <Property Name="ADMITTED_YEAR" Type="date" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="30" />
+    <Property Name="PHONE_NUM" Type="number" Precision="11" Scale="0" />
+    <Property Name="S_KEY" Type="varchar2" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WANTED_POS">
+    <Key>
+      <PropertyRef Name="POS_ID" />
+    </Key>
+    <Property Name="POS_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="POS_NAME" Type="varchar2" MaxLength="30" />
+    <Property Name="SALARY" Type="number" Precision="10" Scale="0" />
+    <Property Name="POS_DESCRIPTION" Type="varchar2" MaxLength="1000" />
+  </EntityType>
+  <Association Name="SYS_C0010924">
+    <End Role="SKILL" Type="Self.SKILL" Multiplicity="1" />
+    <End Role="SKILL_TO_STUDENT" Type="Self.SKILL_TO_STUDENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SKILL">
+        <PropertyRef Name="SKILL_NAME" />
+      </Principal>
+      <Dependent Role="SKILL_TO_STUDENT">
+        <PropertyRef Name="SKILL_NAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010926">
+    <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="1" />
+    <End Role="RESUME" Type="Self.RESUME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STUDENT">
+        <PropertyRef Name="S_ID" />
+      </Principal>
+      <Dependent Role="RESUME">
+        <PropertyRef Name="S_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010932">
+    <End Role="RESUME" Type="Self.RESUME" Multiplicity="1" />
+    <End Role="DOWNLOAD_RESUME" Type="Self.DOWNLOAD_RESUME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESUME">
+        <PropertyRef Name="S_ID" />
+        <PropertyRef Name="OCCUPATION" />
+      </Principal>
+      <Dependent Role="DOWNLOAD_RESUME">
+        <PropertyRef Name="S_ID" />
+        <PropertyRef Name="OCCUPATION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010936">
+    <End Role="QUESTION" Type="Self.QUESTION" Multiplicity="1" />
+    <End Role="PROMPT_Q" Type="Self.PROMPT_Q" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUESTION">
+        <PropertyRef Name="Q_NUM" />
+      </Principal>
+      <Dependent Role="PROMPT_Q">
+        <PropertyRef Name="Q_NUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010938">
+    <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="1" />
+    <End Role="ANSWER_TO_Q" Type="Self.ANSWER_TO_Q" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STUDENT">
+        <PropertyRef Name="S_ID" />
+      </Principal>
+      <Dependent Role="ANSWER_TO_Q">
+        <PropertyRef Name="S_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010939">
+    <End Role="QUESTION" Type="Self.QUESTION" Multiplicity="1" />
+    <End Role="ANSWER_TO_Q" Type="Self.ANSWER_TO_Q" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUESTION">
+        <PropertyRef Name="Q_NUM" />
+      </Principal>
+      <Dependent Role="ANSWER_TO_Q">
+        <PropertyRef Name="Q_NUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010943">
+    <End Role="FIELD" Type="Self.FIELD" Multiplicity="1" />
+    <End Role="Q_TO_FIELD" Type="Self.Q_TO_FIELD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FIELD">
+        <PropertyRef Name="FIELD_NAME" />
+      </Principal>
+      <Dependent Role="Q_TO_FIELD">
+        <PropertyRef Name="FIELD_NAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010947">
+    <End Role="COMPANY" Type="Self.COMPANY" Multiplicity="1" />
+    <End Role="POS_RELEASE" Type="Self.POS_RELEASE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="C_ID" />
+      </Principal>
+      <Dependent Role="POS_RELEASE">
+        <PropertyRef Name="C_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010949">
+    <End Role="WANTED_POS" Type="Self.WANTED_POS" Multiplicity="1" />
+    <End Role="POS_RELATED_FIELD" Type="Self.POS_RELATED_FIELD" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WANTED_POS">
+        <PropertyRef Name="POS_ID" />
+      </Principal>
+      <Dependent Role="POS_RELATED_FIELD">
+        <PropertyRef Name="POS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010950">
+    <End Role="FIELD" Type="Self.FIELD" Multiplicity="0..1" />
+    <End Role="POS_RELATED_FIELD" Type="Self.POS_RELATED_FIELD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FIELD">
+        <PropertyRef Name="FIELD_NAME" />
+      </Principal>
+      <Dependent Role="POS_RELATED_FIELD">
+        <PropertyRef Name="FIELD_NAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="ANSWER_TO_Q" EntityType="Self.ANSWER_TO_Q" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="COMPANY" EntityType="Self.COMPANY" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="DOWNLOAD_RESUME" EntityType="Self.DOWNLOAD_RESUME" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="FIELD" EntityType="Self.FIELD" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="POS_RELATED_FIELD" EntityType="Self.POS_RELATED_FIELD" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="POS_RELEASE" EntityType="Self.POS_RELEASE" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="PROMPT_Q" EntityType="Self.PROMPT_Q" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="Q_TO_FIELD" EntityType="Self.Q_TO_FIELD" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="QUESTION" EntityType="Self.QUESTION" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="RESUME" EntityType="Self.RESUME" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="SKILL" EntityType="Self.SKILL" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="SKILL_TO_STUDENT" EntityType="Self.SKILL_TO_STUDENT" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="STUDENT" EntityType="Self.STUDENT" Schema="ADMIN" store:Type="Tables" />
+    <EntitySet Name="WANTED_POS" EntityType="Self.WANTED_POS" Schema="ADMIN" store:Type="Tables" />
+    <AssociationSet Name="SYS_C0010924" Association="Self.SYS_C0010924">
+      <End Role="SKILL" EntitySet="SKILL" />
+      <End Role="SKILL_TO_STUDENT" EntitySet="SKILL_TO_STUDENT" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010926" Association="Self.SYS_C0010926">
+      <End Role="STUDENT" EntitySet="STUDENT" />
+      <End Role="RESUME" EntitySet="RESUME" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010932" Association="Self.SYS_C0010932">
+      <End Role="RESUME" EntitySet="RESUME" />
+      <End Role="DOWNLOAD_RESUME" EntitySet="DOWNLOAD_RESUME" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010936" Association="Self.SYS_C0010936">
+      <End Role="QUESTION" EntitySet="QUESTION" />
+      <End Role="PROMPT_Q" EntitySet="PROMPT_Q" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010938" Association="Self.SYS_C0010938">
+      <End Role="STUDENT" EntitySet="STUDENT" />
+      <End Role="ANSWER_TO_Q" EntitySet="ANSWER_TO_Q" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010939" Association="Self.SYS_C0010939">
+      <End Role="QUESTION" EntitySet="QUESTION" />
+      <End Role="ANSWER_TO_Q" EntitySet="ANSWER_TO_Q" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010943" Association="Self.SYS_C0010943">
+      <End Role="FIELD" EntitySet="FIELD" />
+      <End Role="Q_TO_FIELD" EntitySet="Q_TO_FIELD" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010947" Association="Self.SYS_C0010947">
+      <End Role="COMPANY" EntitySet="COMPANY" />
+      <End Role="POS_RELEASE" EntitySet="POS_RELEASE" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010949" Association="Self.SYS_C0010949">
+      <End Role="WANTED_POS" EntitySet="WANTED_POS" />
+      <End Role="POS_RELATED_FIELD" EntitySet="POS_RELATED_FIELD" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010950" Association="Self.SYS_C0010950">
+      <End Role="FIELD" EntitySet="FIELD" />
+      <End Role="POS_RELATED_FIELD" EntitySet="POS_RELATED_FIELD" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

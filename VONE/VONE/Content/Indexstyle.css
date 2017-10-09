@@ -1,0 +1,125 @@
+body{
+	margin: 0px;
+}
+
+/*header*/
+
+.head{
+	min-width: 1471px;
+	height: 55px;
+    background-color: #47494d;
+}
+.content{
+	position:absolute;
+	left: 28px;
+}
+.logo{
+	position: absolute;
+	color: #1B9AF7;
+	top:12px;
+	font-size: 23px;
+	left:368px;
+	width: 140px;
+}
+.logo a{
+	cursor: pointer;
+	text-decoration: none;
+	color: #1B9AF7;
+}
+.logo a:hover{
+	color: #2FAEFB;
+}
+.search{
+	margin-left: 530px;
+	padding-top: 14px;
+}
+.search-button{
+	position: absolute;
+	top: 15px;
+	left: 721px;
+}
+
+.nav{
+	position: absolute;
+	left: 770px;
+	top: 15px;
+	width:260px;
+}
+.nav ul li a{
+	 color:#ddd;
+	 font-size:18px;
+	 font-family:"宋体";
+	 text-decoration-line:none;
+}
+
+.nav ul li a:hover{
+	 color:white;
+}
+
+.head ul{
+	list-style:none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.head li{
+	display:inline;
+	padding: 6px;
+	color: white;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+/*button*/
+.signin{
+	position: absolute;
+	left: 1026px;
+	top: 14px;
+	cursor: pointer;
+	width: 59px;
+}
+
+.signin-font{
+	font-weight: bold;
+	margin: 0px;
+}
+
+
+
+/*mid*/
+.mid{
+	min-width: 100%;
+	padding: 0px;
+	height: 100%;
+}
+#bg{
+	
+	min-width: 100%;
+	vertical-align:bottom; 
+	min-height:700px;
+}
+.create-account{
+	position: absolute;
+	top: 390px;
+	left: 600px;
+	width: 124px;
+}
+.find-job{
+	position: absolute;
+	top: 390px;
+	left: 780px;
+	width: 128px;
+}
+.or{
+	position: absolute;
+	top: 390px;
+	left: 743px;
+	color: #888;
+}
+/*footer*/
+.foot{
+	min-width: 1471px;
+	height: 77px;
+	background-color: #111;
+}
+

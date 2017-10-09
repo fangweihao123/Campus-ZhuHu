@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ANSWER_TO_Q">
+      <EntityTypeMapping TypeName="Model.ANSWER_TO_Q">
+        <MappingFragment StoreEntitySet="ANSWER_TO_Q">
+          <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+          <ScalarProperty Name="Q_NUM" ColumnName="Q_NUM" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+          <ScalarProperty Name="POINTS" ColumnName="POINTS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPANY">
+      <EntityTypeMapping TypeName="Model.COMPANY">
+        <MappingFragment StoreEntitySet="COMPANY">
+          <ScalarProperty Name="C_ID" ColumnName="C_ID" />
+          <ScalarProperty Name="COMP_NAME" ColumnName="COMP_NAME" />
+          <ScalarProperty Name="COMP_TYPE" ColumnName="COMP_TYPE" />
+          <ScalarProperty Name="COMP_ADDRESS" ColumnName="COMP_ADDRESS" />
+          <ScalarProperty Name="COMP_EMAIL" ColumnName="COMP_EMAIL" />
+          <ScalarProperty Name="COMP_PHONE" ColumnName="COMP_PHONE" />
+          <ScalarProperty Name="C_KEY" ColumnName="C_KEY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOWNLOAD_RESUME">
+      <EntityTypeMapping TypeName="Model.DOWNLOAD_RESUME">
+        <MappingFragment StoreEntitySet="DOWNLOAD_RESUME">
+          <ScalarProperty Name="C_ID" ColumnName="C_ID" />
+          <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+          <ScalarProperty Name="OCCUPATION" ColumnName="OCCUPATION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FIELD">
+      <EntityTypeMapping TypeName="Model.FIELD">
+        <MappingFragment StoreEntitySet="FIELD">
+          <ScalarProperty Name="FIELD_NAME" ColumnName="FIELD_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POS_RELATED_FIELD">
+      <EntityTypeMapping TypeName="Model.POS_RELATED_FIELD">
+        <MappingFragment StoreEntitySet="POS_RELATED_FIELD">
+          <ScalarProperty Name="POS_ID" ColumnName="POS_ID" />
+          <ScalarProperty Name="FIELD_NAME" ColumnName="FIELD_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POS_RELEASE">
+      <EntityTypeMapping TypeName="Model.POS_RELEASE">
+        <MappingFragment StoreEntitySet="POS_RELEASE">
+          <ScalarProperty Name="POS_ID" ColumnName="POS_ID" />
+          <ScalarProperty Name="C_ID" ColumnName="C_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROMPT_Q">
+      <EntityTypeMapping TypeName="Model.PROMPT_Q">
+        <MappingFragment StoreEntitySet="PROMPT_Q">
+          <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+          <ScalarProperty Name="Q_NUM" ColumnName="Q_NUM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Q_TO_FIELD">
+      <EntityTypeMapping TypeName="Model.Q_TO_FIELD">
+        <MappingFragment StoreEntitySet="Q_TO_FIELD">
+          <ScalarProperty Name="Q_NUM" ColumnName="Q_NUM" />
+          <ScalarProperty Name="FIELD_NAME" ColumnName="FIELD_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUESTION">
+      <EntityTypeMapping TypeName="Model.QUESTION">
+        <MappingFragment StoreEntitySet="QUESTION">
+          <ScalarProperty Name="Q_NUM" ColumnName="Q_NUM" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESUME">
+      <EntityTypeMapping TypeName="Model.RESUME">
+        <MappingFragment StoreEntitySet="RESUME">
+          <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+          <ScalarProperty Name="OCCUPATION" ColumnName="OCCUPATION" />
+          <ScalarProperty Name="DOC_PATH" ColumnName="DOC_PATH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SKILL">
+      <EntityTypeMapping TypeName="Model.SKILL">
+        <MappingFragment StoreEntitySet="SKILL">
+          <ScalarProperty Name="SKILL_NAME" ColumnName="SKILL_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SKILL_TO_STUDENT">
+      <EntityTypeMapping TypeName="Model.SKILL_TO_STUDENT">
+        <MappingFragment StoreEntitySet="SKILL_TO_STUDENT">
+          <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+          <ScalarProperty Name="SKILL_NAME" ColumnName="SKILL_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STUDENT">
+      <EntityTypeMapping TypeName="Model.STUDENT">
+        <MappingFragment StoreEntitySet="STUDENT">
+          <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="COLLEGE_NAME" ColumnName="COLLEGE_NAME" />
+          <ScalarProperty Name="MAJOR" ColumnName="MAJOR" />
+          <ScalarProperty Name="DEGREE" ColumnName="DEGREE" />
+          <ScalarProperty Name="ADMITTED_YEAR" ColumnName="ADMITTED_YEAR" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PHONE_NUM" ColumnName="PHONE_NUM" />
+          <ScalarProperty Name="S_KEY" ColumnName="S_KEY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WANTED_POS">
+      <EntityTypeMapping TypeName="Model.WANTED_POS">
+        <MappingFragment StoreEntitySet="WANTED_POS">
+          <ScalarProperty Name="POS_ID" ColumnName="POS_ID" />
+          <ScalarProperty Name="POS_NAME" ColumnName="POS_NAME" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="POS_DESCRIPTION" ColumnName="POS_DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

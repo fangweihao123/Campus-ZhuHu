@@ -1,0 +1,75 @@
+﻿@model VONE.Models.GuestResponse
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <title>校园管理系统</title>
+</head>
+<body background="../img/bg8.jpg">
+
+    <div>
+        <ul class="list-inline">
+            <li id="title" style="margin:1% 40% 0% 12%;">@Html.ActionLink("校园管理系统", "Index","Home")</li>
+            <li>@Html.ActionLink("首页", "Index","Home")</li>
+            <li>@Html.ActionLink("学生","")</li>
+            <li>@Html.ActionLink("老师","")</li>
+            <li>@Html.ActionLink("公司","")</li>
+            <li>@Html.ActionLink("关于","")</li>
+        </ul>
+    </div>
+    <div>
+        <div class="div-login">
+            <div class="div-logintitle">登陆校园</div>
+            <div>
+                @using (Html.BeginForm())
+                {
+                    <div class="div-errormessage">@Html.ValidationSummary()</div>
+                    <div class="div-relative">
+                        @Html.TextBoxFor(x => x.Account, new
+                   {
+                       @class = "form-control",
+                       @placeholder = "用户名",
+                       style = " border-radius:6px; background-color:#ddd; width:250px; height:40px; margin:auto; margin-bottom:4px;"
+                   })
+                        <div>
+                            @Html.DropDownListFor(x => x.Occupation, new[] {
+                            new SelectListItem() { Text = "学生", Value = "学生"},
+                            new SelectListItem() { Text = "公司", Value = "公司" }
+                            }, "职位", new { @class = "form-control", style = "-webkit-appearance: none; padding-left:12px; font-size:15px; border-radius:6px; border:0px; color:#eee; background-color:#999; width:65px; height:40px; position:absolute; left:215px; top:0px;" })
+                            <span class="caret" style="border-top: 4px dashed #eee; position:absolute; left:260px; top:19px;"></span>
+                        </div>
+                    </div>
+                    <div>
+                        @Html.PasswordFor(x => x.Password, new
+                   {
+                       @class = "form-control",
+                       @placeholder = "密码",
+                       style = "border-radius:6px; background-color:#ddd; width:250px; height:40px;   margin:auto; margin-bottom:27px;"
+                   })
+                    </div>
+                    <div class="text-center">
+                        <input class="login-button" type="submit" value="登陆" />
+                    </div>
+                    <div class="div-signin">
+                        @Html.ActionLink("注册", "SignUp")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="../Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AddWantedJob</title>
+    <link rel="stylesheet" href="../content/jquery-labelauty.css">
+    <style>
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        input.labelauty + label {
+            font: 12px "Microsoft Yahei";
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="../Company/AddJobSuccess" method="post">
+            <p>请输入您想招聘的职位:<input type="text" name="pos_name"/></p>
+            <p>每月薪水<input type="text" name="salary"/></p>
+            <p>请选择职位相关的领域<ul class="field"></ul></p>
+            <p>职位的描述:<textarea name="description" style="width:300px;height:500px;"></textarea></p>
+            <input type="submit" value="提交职位"/>
+        </form>
+    </div>
+    <script src="~/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/jquery-labelauty.js"></script>
+    <script>
+        var ul = document.getElementsByClassName('field')[0]
+        var x = '@TempData["json"]'
+        x = x.replace(/&quot;/g, '"');
+        x = JSON.parse(x);
+
+        for(var i=0;i<x.length;i++)
+        {
+            var li = document.createElement('li')
+            var input = document.createElement('input')
+            input.type = 'radio'
+            input.name = 'radio'
+            var data = x[i].fieldname
+            input.value =data
+            input.setAttribute('data-labelauty', data)
+            li.appendChild(input)
+            ul.appendChild(li)
+        }
+    </script>
+    <script>
+        $(function(){
+	        $(':input').labelauty();
+        });
+    </script>
+</body>
+</html>
+
+

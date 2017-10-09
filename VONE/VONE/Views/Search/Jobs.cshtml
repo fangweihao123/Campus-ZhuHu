@@ -1,0 +1,173 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <script src="https://unpkg.com/vue"></script>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="~/Scripts/script.js"></script>
+    <script type="text/javascript" src="~/Scripts/vue.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../content/bootstraptemp.css" />
+
+    <link rel="stylesheet" type="text/css" href="../Content/Indexstyle.css" />
+    <link rel="stylesheet" type="text/css" href="../content/buttons.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        .job-foot {
+            min-width: 1471px;
+            height: 77px;
+            background-color: #111;
+            padding-bottom: 0;
+            float:left;
+        }
+
+        /*.mid {
+            width:800px;
+            min-height: 400px;
+            background-color: #ffd800;
+            overflow: hidden;
+        }*/
+
+        .job-info {
+            padding: 18px;
+            cursor: pointer;
+            width: 380px;
+            height: 380px;
+            margin-top: 15px;
+            border-radius: 4px;
+            background-color: rgb(245, 245, 245);
+            border: solid 1px;
+            border-color: rgb(245, 245, 245);
+            float: left;
+            margin-left: 15px;
+        }
+
+            .job-info:hover {
+                border-color: #0094ff;
+            }
+    </style>
+
+</head>
+<body style="margin:0;background-color:#ddd;" class="body">
+    <div class="head">
+        <div class="conten">
+            <div class="logo"><a>校园管理系统</a></div>
+            <div class="search">
+                <form method="post" action="../Search/Question">
+                    <input type="text" name="search" class="form-control" placeholder="搜索问题">
+                    <button class="button button-rounded search-button button-search" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+            </div>
+
+
+            <div class="nav">
+                <ul>
+                    <li><a href="../Search/Jobs">工作</a></li>
+                    <li><a>用户</a></li>
+                    <li><a>新手指南</a></li>
+                </ul>
+            </div>
+            @if (Session["Occupation"] == null)
+            {
+                <a href="Home/SignIn"><button class="button button-primary button-rounded button-small signin"><h5 class="signin-font">登录</h5></button></a>
+            }
+            else
+            {
+                <div style="margin-left:1100px; width:300px; font-size:large; margin-top:-25px;">
+                    <a style="float:left;">@Session["user"]</a>
+                    <p style="color:#ffffff;float:left;margin-left:10px;">欢迎 ! </p>
+                    <a href="#" onclick="js_method()" style="float:left;margin-left:20px;">退出登陆</a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="mainContent">
+        <div class="content" style="">
+        </div>
+    </div>
+
+    <script>
+        var x = '@TempData["json"]'                                     //tempdata 是jobmodel转化过来的
+        x = x.replace(/&quot;/g, '"')
+        x = x.replace(/\r\n/g, '<br/>')
+        var json = JSON.parse(x)
+        var left = document.getElementsByClassName('content')[0]
+        var form = document.createElement('form')
+        form.id = 'postForm'
+        var mainContent = document.getElementsByClassName('mainContent')[0]
+
+        var container = document.createElement('div')
+        container.style.cssText = 'float:width:1500px;height:1000px;border:3px solid #000000;float:left'
+
+        for(var i=0;i<json.length;i++)
+        {
+            var div = document.createElement('div')
+            var posid = document.createElement('p')
+            var posname = document.createElement('p')
+            var description = document.createElement('p')
+            var salary = document.createElement('p')
+            var field = document.createElement('p')
+
+            var POS_ID = json[i].POS_ID                                //传入的是AnswerModel    有q_id studentName content point
+            var POSNAME = json[i].POS_NAME
+            var SALARY = '薪水:' + json[i].SALARY
+            var DESCRIPTION = json[i].DESCRIPTION
+            var FIELD = json[i].RELATED_FIELD
+            var C_ID = json[i].C_ID
+            var COMPNAME = json[i].COMP_NAME
+
+            posid.innerHTML = POS_ID
+            posname.innerHTML = POSNAME                              //通过get传递的有 q_id s_id 来找到answer具体
+            salary.innerHTML = SALARY
+            description.innerHTML = DESCRIPTION
+            field.innerHTML = FIELD
+
+            //container.setAttribute("class", "mid");
+            div.setAttribute("class", "job-info");
+            //div.style.cssText = 'cursor: pointer;width:500px;height:100%;margin-left:480px;margin-top:20px;border-radius: 4px; background-color :rgb(245, 245, 245);'
+            div.addEventListener('click', function (c_id) {
+                var pid = json[i].POS_ID
+                return function () {
+                    var form = document.getElementById('postForm');
+                    form.action = '../Search/JobDetails?POS_ID=' + pid
+                    form.method = 'post';
+                    form.submit();
+                };
+            }(C_ID))
+
+            var btn = document.createElement('input')
+            description.style.cssText = 'float:top;padding-top:20px;'
+            salary.style.cssText = 'float:top;margin-top:20px;font-size:large;margin-left:100px;'
+            posname.style.cssText = 'float:top;margin-top:10px;font-size:large;font-weight:bold;margin-left:100px;'
+            field.style.cssText = 'float:top;margin-top:10px;font-size:large;font-weight:bold;margin-left:100px;'
+            
+            btn.type = 'button'
+            btn.className = 'button'
+            btn.className = 'button-circle'
+            btn.value = '招聘中'
+            btn.style.cssText = 'width:80px;margin-left:120px;'
+
+            div.appendChild(btn)
+            div.appendChild(posname)
+            div.appendChild(description)
+            div.appendChild(salary)
+            div.appendChild(field)
+
+            form.appendChild(div)
+
+            //body.appendChild(div)
+        }
+        left.appendChild(form)
+        var jobFoot = document.createElement('div')
+        jobFoot.className = 'job-foot'
+        jobFoot.style.cssText = 'margin-top:100px;'
+        left.appendChild(jobFoot)
+    </script>
+</body>
+</html>

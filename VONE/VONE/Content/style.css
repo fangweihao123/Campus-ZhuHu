@@ -1,0 +1,85 @@
+﻿
+.field-validation-error{color:#f00;}
+.field-validation-valid{display: none;}
+.input-validation-error{border:1px solid #f00; background-color:#fee;}
+.validation-summary-errors{font-weight:bold; color: #f00;}
+.validation-summary-valid{display: none;}
+
+/*登陆css*/
+.list-inline{    
+        display:block;
+     }
+
+.list-inline > li > a{
+         display:inline-block;
+         color:#ffffff;
+         font-size:20px;
+         font-family:"宋体";
+         text-decoration-line:none;
+         
+     }
+
+.list-inline li a:hover {
+         color:#0094ff;
+      } 
+
+#title > a{
+    font-size:30px;
+    font-family:"华文新魏";
+}      
+
+.div-errormessage{
+    margin-left:10px;
+}
+
+.div-login{
+    background-color:rgba(0,0,0,0.75);
+    border-radius:10px;
+    float:right;
+    width:310px;
+    margin-top:2%;
+    margin-right:18%;
+}
+
+.div-logintitle
+{
+    text-align:center;
+    font-size:30px;
+    color:#c2c2c2;
+    padding:30px;
+    font-family:"宋体";
+}
+
+.div-relative{
+    position:relative;
+}
+
+.login-button{
+    height:40px;
+    width:250px;
+    background-color:#0094ff;
+    border:0;
+    border-radius:6px;
+    color:#fee;
+    font-size:20px;
+    margin-bottom:20px;
+    
+}
+
+.div-signin{
+    padding-bottom:28px;
+}
+
+.div-signin a {
+    font-size:18px;
+    color:#c2c2c2;
+    margin-left:235px;
+    text-decoration-line:none;
+}
+
+.div-signin a:hover {
+         color:#e81919;
+    }
+
+
+/*注册css*/
